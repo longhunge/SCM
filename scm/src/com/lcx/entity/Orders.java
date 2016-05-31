@@ -1,14 +1,11 @@
 package com.lcx.entity;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.type.SerializableToBlobType;
-
+/**
+ * 订单
+ * @author lcx
+ *
+ */
 public class Orders implements Serializable{
 	private String oid;
 	private String pid;
