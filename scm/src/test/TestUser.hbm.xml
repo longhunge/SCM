@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="test.TestUser" table="TestUser">
+		<!-- 主键 -->
+		<id name="tid" type="java.lang.String">
+			<column name="tid" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<!-- 非主键 类型可以不写 -->
+		<property column="name" length="20" generated="never" lazy="false"
+			name="name" not-null="true" type="java.lang.String" />
+		<property column="password" length="20" generated="never" lazy="false"
+			name="password" not-null="true" type="java.lang.String" />		
+	</class>
+</hibernate-mapping>

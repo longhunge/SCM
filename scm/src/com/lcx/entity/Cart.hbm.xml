@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lcx.entity">
+	<class name="Cart">
+		<!-- 主键 -->
+		<id name="cid" type="java.lang.String">
+			<column name="cid" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		
+		<!-- 非主键 类型可以不写 -->
+		<property column="pid" length="32" generated="never" lazy="false"
+			name="pid" type="java.lang.String" />
+		<property column="tid" length="32" generated="never" lazy="false"
+			name="tid" type="java.lang.String" />
+		<property column="uid" length="32" generated="never" lazy="false"
+			name="uid" type="java.lang.String" />
+		<property column="bid" length="32" generated="never" lazy="false"
+			name="bid" type="java.lang.String" />
+		<property column="sid" length="32" generated="never" lazy="false"
+			name="sid" type="java.lang.String" />
+		<property column="cnumber" length="20" generated="never" lazy="false"
+			name="cnumber" type="java.lang.Integer" />
+		<property column="totle" length="20" generated="never" lazy="false"
+			name="totle" type="java.lang.Double" />
+	</class>
+</hibernate-mapping>

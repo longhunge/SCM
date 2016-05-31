@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lcx.entity">
+	<class name="ProductSize">
+		<!-- 主键 -->
+		<id name="sid" type="java.lang.String">
+			<column name="sid" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		
+		<!-- 非主键 类型可以不写 -->
+		<property column="pid" length="32" generated="never" lazy="false"
+			name="pid" type="java.lang.String" />		
+		<property column="psize" length="20" generated="never" lazy="false"
+			name="psize" type="java.lang.String" />
+		<property column="pnum" length="5" generated="never" lazy="false"
+			name="pnum" type="java.lang.Integer" />
+	</class>
+</hibernate-mapping>

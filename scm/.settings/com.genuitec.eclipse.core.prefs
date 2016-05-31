@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+validator.Checked=src/config/struts-cart.xml,src/struts.xml,src/config/struts-test.xml,src/config/struts-loginuser.xml,src/com/lcx/entity/order.hbm.xml,WebRoot
+validator.Revalidate=true
+validator.Unchecked=

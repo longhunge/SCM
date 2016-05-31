@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lcx.entity">
+	<class name="Product">
+		<!-- 主键 -->
+		<id name="pid" type="java.lang.String">
+			<column name="pid" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<!-- 非主键 类型可以不写 -->
+		<property column="pname" length="50" generated="never" lazy="false"
+			name="pname" type="java.lang.String" />
+		<property column="bid" length="32"  generated="never" lazy="false"
+			name="bid" type="java.lang.String" />
+		<property column="tid" length="32"  generated="never" lazy="false"
+			name="tid" type="java.lang.String" />
+		<property column="intrduce" length="2048" generated="never" lazy="false"
+			name="intrduce" type="java.lang.String" />
+		<property column="price" length="200" generated="never" lazy="false"
+			name="price" type="java.lang.Double" />
+		<property column="img1" length="200" generated="never" lazy="false"
+			name="img1" type="java.lang.String" />
+		<property column="img2" length="200" generated="never" lazy="false"
+			name="img2" type="java.lang.String" />
+		<property column="img3" length="200" generated="never" lazy="false"
+			name="img3" type="java.lang.String" />
+		<property column="img4" length="200" generated="never" lazy="false"
+			name="img4" type="java.lang.String" />
+		<property column="img5" length="200" generated="never" lazy="false"
+			name="img5" type="java.lang.String" />
+	</class>
+</hibernate-mapping>

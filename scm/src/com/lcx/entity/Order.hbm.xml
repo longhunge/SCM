@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lcx.entity">
+	<class name="Orders">
+		<!-- 主键 -->
+		<id name="oid" type="java.lang.String">
+			<column name="oid" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		
+		<!-- 非主键 类型可以不写 -->
+		<property column="pid" length="32" generated="never" lazy="false"
+			name="pid" type="java.lang.String" />
+		<property column="lid" length="32" generated="never" lazy="false"
+			name="lid" type="java.lang.String" />
+		<property column="uid" length="32" generated="never" lazy="false"
+			name="uid" type="java.lang.String" />
+		<property column="pname" length="20" generated="never" lazy="false"
+			name="pname" type="java.lang.String" />
+		<property column="address" length="20" generated="never" lazy="false"
+			name="address" type="java.lang.String" />
+		<property column="phone" length="20" generated="never" lazy="false"
+			name="phone" type="java.lang.String" />
+	</class>
+</hibernate-mapping>
