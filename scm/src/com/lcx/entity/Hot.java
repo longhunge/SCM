@@ -1,7 +1,11 @@
 package com.lcx.entity;
 
 import java.io.Serializable;
-
+/**
+ * 热门推荐
+ * @author lcx
+ *
+ */
 public class Hot implements Serializable {
 	private Integer hotid;
 	private String hot1;
