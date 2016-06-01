@@ -14,16 +14,17 @@ public class Orders implements Serializable{
 	private String lstatus;//物流状态：发货中，已收货，运输中，退货中
 	private String ostatus;//订单状态：待付款，已付款，待收货
 	private String pname;
+	private Integer pnum;//产品数量
 	private String address;
 	private String phone;
 	
 	public Orders() {
 		super();
 	}
-	
+
 	public Orders(String oid, String pid, String uid, String lid,
-			String lstatus, String ostatus, String pname, String address,
-			String phone) {
+			String lstatus, String ostatus, String pname, Integer pnum,
+			String address, String phone) {
 		super();
 		this.oid = oid;
 		this.pid = pid;
@@ -32,13 +33,18 @@ public class Orders implements Serializable{
 		this.lstatus = lstatus;
 		this.ostatus = ostatus;
 		this.pname = pname;
+		this.pnum = pnum;
 		this.address = address;
 		this.phone = phone;
 	}
 
+	public Integer getPnum() {
+		return pnum;
+	}
 
-
-
+	public void setPnum(Integer pnum) {
+		this.pnum = pnum;
+	}
 
 	public String getLid() {
 		return lid;

@@ -10,6 +10,8 @@
 		</id>
 		
 		<!-- 非主键 类型可以不写 -->
+		<property column="pnum" length="32" generated="never" lazy="false"
+			name="pnum" type="java.lang.Integer" />
 		<property column="pid" length="32" generated="never" lazy="false"
 			name="pid" type="java.lang.String" />
 		<property column="lid" length="32" generated="never" lazy="false"
