@@ -1,7 +1,11 @@
 package com.lcx.entity;
 
 import java.io.Serializable;
-
+/**
+ * 商品推荐设置
+ * @author lcx
+ *
+ */
 public class Recommended implements Serializable{
 	String rid;//推荐id
 	String pid;//商品id

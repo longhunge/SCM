@@ -8,9 +8,11 @@ import java.util.Date;
  *
  */
 public class WuliuUpdate implements Serializable{
-	private String woid;
-	private Date wudate;
-	private String arrive;
+	private String wuid;//自己的主键
+	private String woid;//物流订单id
+	private String wid; //物流管理员id
+	private Date wudate;//物流更新时间
+	private String arrive;//物流更新地点
 	
 	
 	
@@ -18,12 +20,33 @@ public class WuliuUpdate implements Serializable{
 	public WuliuUpdate() {
 		super();
 	}
-	public WuliuUpdate(String woid, Date wudate, String arrive) {
-		super();
-		this.woid = woid;
-		this.wudate = wudate;
-		this.arrive = arrive;
+	
+
+
+	public String getWuid() {
+		return wuid;
 	}
+
+
+
+	public void setWuid(String wuid) {
+		this.wuid = wuid;
+	}
+
+
+
+	public String getWid() {
+		return wid;
+	}
+
+
+
+	public void setWid(String wid) {
+		this.wid = wid;
+	}
+
+
+
 	public String getWoid() {
 		return woid;
 	}

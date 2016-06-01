@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lcx.entity">
+	<class name="WuliuUpdate">
+		<!-- 主键 -->
+		<id name="wuid" type="java.lang.String">
+			<column name="wuid" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<!-- 非主键 类型可以不写 -->
+		<property column="woid" length="32" generated="never" lazy="false"
+			name="woid" type="java.lang.String" />
+		<property column="wid" length="32" generated="never" lazy="false"
+			name="wid" type="java.lang.String" />
+		<property column="arrive" length="255" generated="never" lazy="false"
+			name="arrive" type="java.lang.String" />
+		<property column="wudate" length="255" generated="never" lazy="false"
+			name="wudate" type="java.util.Date" />		
+	</class>
+</hibernate-mapping>

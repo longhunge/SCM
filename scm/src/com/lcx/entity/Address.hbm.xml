@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lcx.entity">
+	<class name="Address">
+		<!-- 主键 -->
+		<id name="aid" type="java.lang.String">
+			<column name="bid" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<!-- 非主键 类型可以不写 -->
+		<property column="uid" length="32" generated="never" lazy="false"
+			name="uid" type="java.lang.String" />
+		<property column="uaddress" length="255" generated="never" lazy="false"
+			name="uaddress" type="java.lang.String" />		
+	</class>
+</hibernate-mapping>
