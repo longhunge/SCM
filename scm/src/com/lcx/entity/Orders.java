@@ -7,9 +7,9 @@ import java.io.Serializable;
  *
  */
 public class Orders implements Serializable{
-	private String oid;
-	private String pid;
-	private String uid;
+	private String oid; //订单id
+	private String pid; //产品
+	private String uid;  //用户
 	private String lid;    //物流公司
 	private String lstatus;//物流状态：发货中，已收货，运输中，退货中
 	private String ostatus;//订单状态：待付款，已付款，待收货
