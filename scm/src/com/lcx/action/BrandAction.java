@@ -16,7 +16,7 @@ public class BrandAction extends ActionSupport {
 	private Brand brand;
 	private List<Brand> blist;
 	private List<ProductType> tlist;
-	private ProductType ttype;
+	private ProductType ptype;
 	ActionContext ctx = ActionContext.getContext();
 	@Resource
 	private BrandService brandService;
@@ -100,13 +100,15 @@ public class BrandAction extends ActionSupport {
 		this.tlist = tlist;
 	}
 
-	public ProductType getTtype() {
-		return ttype;
+	public ProductType getPtype() {
+		return ptype;
 	}
 
-	public void setTtype(ProductType ttype) {
-		this.ttype = ttype;
+	public void setPtype(ProductType ptype) {
+		this.ptype = ptype;
 	}
+
+	
 	
 
 	
