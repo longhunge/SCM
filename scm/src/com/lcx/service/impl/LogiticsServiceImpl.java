@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.lcx.dao.LogiticsDao;
 import com.lcx.entity.Logitics;
 import com.lcx.service.LogiticsService;
-
+@Service("logiticsService")
 public class LogiticsServiceImpl implements LogiticsService {
 
 	@Resource
