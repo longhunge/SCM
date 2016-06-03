@@ -161,24 +161,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">添加用户</div>
+						<div class="panel-heading">添加物流公司</div>
 
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-6">
-									<form role="form" action="<%=basePath%>brand/brand_badd.action" method="post" enctype="multipart/form-data">
+									<form role="form" action="<%=basePath%>logitics/logitics_add.action" method="post" enctype="multipart/form-data">										
 										<div class="form-group">
-											<label>类别</label> 
-											<select class="form-control"
-												name="brand.tid">
-												<c:forEach var="ttype" items="${tlist}" varStatus="rowStatus">
-													<option value="${ttype.tid}" selected>${ttype.tname}</option>
-												</c:forEach>
-											</select>
-										</div>
-										<div class="form-group">
-											<label>品牌: </label> <input class="form-control" type="text"
-												name="brand.bname">
+											<label>公司名称: </label> <input class="form-control" type="text"
+												name="logitics.lname">
 										</div>
 										<button type="submit" class="btn btn-default">添加</button>
 										<button type="reset" class="btn btn-default">取消</button>

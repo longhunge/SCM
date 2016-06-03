@@ -142,19 +142,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-6">
-									<form role="form" action="<%=basePath%>brand/brand_bedit.action">
-										<input type="hidden" value="${brand.bid }" name="brand.bid">
-										<div class="form-group">
-											<label>类别</label> <select class="form-control"
-												name="brand.tid">
-												<c:forEach var="ttype" items="${tlist}" varStatus="rowStatus">
-													<option value="${ttype.tid}" selected>${ttype.tname}</option>
-												</c:forEach>
-											</select>
-										</div>
+									<form role="form" action="<%=basePath%>logitics/logitics_edit.action">
+										<input type="hidden" value="${logitics.lid }" name="logitics.lid">
+						
 										<div class="form-group">
 											<label>类别: </label> <input class="form-control" type="text"
-												name="brand.bname" value="${brand.bname}">
+												name="logitics.lname" value="${logitics.lname}">
 										</div>
 										<button type="submit" class="btn btn-default">修改</button>
 										<a href="<%=basePath %>brand/brand_blistui.action"><button type="reset" class="btn btn-default">取消</button></a>

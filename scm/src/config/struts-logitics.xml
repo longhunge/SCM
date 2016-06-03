@@ -6,10 +6,10 @@
 <struts>
 	<package name="logitics-action" namespace="/logitics" extends="struts-default">
 	<action name="logitics_*" class="com.lcx.action.LogiticsAction" method="{1}">
-		<result name="{1}">/WEB-INF/back/brand/{1}.jsp</result>
-		<!-- <result name="list" type="redirectAction">
-			<param name="actionName">brand_blistui</param>
-		</result> -->
+		<result name="{1}">/WEB-INF/back/logitics/{1}.jsp</result>
+		<result name="list" type="redirectAction">
+			<param name="actionName">logitics_listui</param>
+		</result>
 	</action>
 	</package>
 </struts>

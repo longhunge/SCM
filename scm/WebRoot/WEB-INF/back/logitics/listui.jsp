@@ -177,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<table cellspacing="4px">
 						<tr>
                         	<td>   
-                                 <a href="<%=basePath %>brand/brand_baddui.action"> <button type="button" class="btn btn-inline btn-default">增加</button></a>
+                                 <a href="<%=basePath %>logitics/logitics_addui.action"> <button type="button" class="btn btn-inline btn-default">增加</button></a>
                             </td>
                             </tr>
                             </table>
@@ -191,23 +191,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>类别</th>
-                                            <th>品牌</th>							
+                                        	<th>公司名称</th>          				
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="brand" items="${blist}" varStatus="rowStatus">   
-                                        <c:forEach var="ttype" items="${tlist}" varStatus="rowStatus">  
-                                      	<c:if test="${ttype.tid eq brand.tid}">
+                                    <c:forEach var="logitics" items="${list}" varStatus="rowStatus">   
+                                      	<c:if test="${not empty list}">
                                       	 
                                         <tr class="gradeC">
-                                         	<td><c:out value="${ttype.tname}"/></td>
-                                            <td><c:out value="${brand.bname}"/></td>
-                                            <td class="center"><a href="<%=basePath %>brand/brand_bdelete.action?brand.bid=${brand.bid}">删除</a>||<a href="<%=basePath %>brand/brand_beditui.action?brand.bid=${brand.bid}">编辑</a></td> 	
+                                         	<td><c:out value="${logitics.lname}"/></td>
+                        
+                                            <td class="center"><a href="<%=basePath %>logitics/logitics_delete.action?logitics.lid=${logitics.lid}">删除</a>||<a href="<%=basePath %>logitics/logitics_editui.action?logitics.lid=${logitics.lid}">编辑</a></td> 	
                                         </tr> 
                                         </c:if> 
-                                        </c:forEach>
+                                       
                                       </c:forEach>                
                                     </tbody>
                                 </table>
