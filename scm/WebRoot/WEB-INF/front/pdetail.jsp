@@ -18,8 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- start details -->
-<link rel="stylesheet" type="text/css" href="<%=basePath%>css/productviewgallery.css" media="all" />
+	<!-- start details -->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/productviewgallery.css" media="all" />
 	<script src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
 	<style type="text/css">
 		*{
@@ -90,6 +90,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
 				});
 			});
+	</script>
+	<script type="text/javascript">
+	function addtocart(){
+		
+	}
 	</script>
   </head>
   
@@ -555,11 +560,11 @@ window.onload = function(){
 							<li>尺寸:
 								<select>
 								<c:forEach var="posize" items="${slist }" varStatus="rowStatus">
-									<option >${posize.psize }</option>
+									<option name="cart.sid" value="${posize.sid}">${posize.psize }</option>
 								</c:forEach>
 								</select>
 							<li>
-						<div class="i_box">数量:<a href="javascript:;" class="J_minus">-</a><input type="text" value="0" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
+						<div class="i_box">数量:<a href="javascript:;" class="J_minus">-</a><input name="" type="text" value="1" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
 						</li>
 						</ul>
 						<ul>
@@ -568,7 +573,7 @@ window.onload = function(){
 						<li>
 							<a href="#" ></a>
 						</li>	
-						<span class="span_right"><a href="#"><img src="<%=basePath%>images/logo/addcart.png" title="加入购物车"></a></span>
+						<span class="span_right"><a href="javascript:addtocart();"><img src="<%=basePath%>images/logo/addcart.png" title="加入购物车"></a></span>
 						<div class="clear"></div>
 					</div>
 			   	 </div>

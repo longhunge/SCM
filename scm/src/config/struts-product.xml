@@ -10,9 +10,7 @@
 		<result name="list" type="redirectAction">
 			<param name="actionName">product_plistui</param>
 		</result>
-		<result name="redirecter" type="redirectAction">
-			<param name="actionName">product_redirect</param>
-		</result>
+		<result name="pdetail">/WEB-INF/front/pdetail.jsp</result>
 	</action>
 	</package>
 </struts>
