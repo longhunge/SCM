@@ -93,7 +93,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
 	<script type="text/javascript">
 	function addtocart(){
-		
+		document.forms[0].action = "<%=basePath %>front/user/cart.action";
+  		document.forms[0].submit();
 	}
 	</script>
   </head>
@@ -543,8 +544,9 @@ window.onload = function(){
 		</div>
 			<!-- start span1_of_1 -->
 			<div class="span1_of_1_des">
-			<form>
+				<form>
 				  <div class="desc1">
+				  
 					<h3>${product.pname }</h3>
 					<p>服装简介在这里咯</p>
 					<h5>￥${product.price } <a href="#">联系客服</a></h5>
@@ -553,13 +555,16 @@ window.onload = function(){
 						<ul>
 							<li>物流公司:
 								<select>
-								<option>顺丰</option>
-								<option>韵达</option>
-								
-							</select></li>
+								<c:if test="${!empty llist }">
+								<c:forEach var="logitics" items="${llist}">
+								<option name="logitics.lid" value="${logitics.lid }">${logitics.lname }</option>
+								</c:forEach>
+								</c:if>
+							</select>
+							</li>
 							<li>尺寸:
 								<select>
-								<c:forEach var="posize" items="${slist }" varStatus="rowStatus">
+								<c:forEach var="posize" items="${slist }">
 									<option name="cart.sid" value="${posize.sid}">${posize.psize }</option>
 								</c:forEach>
 								</select>

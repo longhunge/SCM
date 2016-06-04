@@ -12,11 +12,13 @@ import org.apache.struts2.ServletActionContext;
 
 import com.lcx.entity.Brand;
 import com.lcx.entity.Hot;
+import com.lcx.entity.Logitics;
 import com.lcx.entity.Product;
 import com.lcx.entity.ProductSize;
 import com.lcx.entity.ProductType;
 import com.lcx.service.BrandService;
 import com.lcx.service.HotService;
+import com.lcx.service.LogiticsService;
 import com.lcx.service.ProductService;
 import com.lcx.service.ProductSizeService;
 import com.lcx.service.ProductTypeService;
@@ -34,7 +36,8 @@ public class ProductAction extends ActionSupport {
 	private ProductSizeService productSizeService;
 	@Resource
 	private HotService hotService;
-	
+	@Resource
+	private LogiticsService logiticsService;
 	private ProductSize productSize=new ProductSize();
 	private List <ProductSize> slist;
 	private List<Brand> blist;
@@ -44,6 +47,7 @@ public class ProductAction extends ActionSupport {
 	private List <Hot> hlist;
 	private Brand brand;
 	private List<ProductType> tlist;
+	private List<Logitics> llist;
 	
 	private String[] selectRaw;
 	/**size start**/
@@ -82,6 +86,7 @@ public class ProductAction extends ActionSupport {
 	
 	
 	public String pdetail(){
+		llist = logiticsService.findall();
 		slist = productSizeService.finbypid(product.getPid());
 		product = productService.findbyid(product.getPid());		
 		return "pdetail";
@@ -180,7 +185,7 @@ public class ProductAction extends ActionSupport {
 		product.setImg4("upload/goods/"+Save(img4,filepath,img3FileName));
 		product.setImg5("upload/goods/"+Save(img5,filepath,img5FileName));
 		//product.setPname(new String(product.getPname().getBytes("ISO-8859-1"),"UTF-8"));
-		check();
+		upsize();
 		productService.update(product);
 		return "list";
 	}
@@ -189,7 +194,6 @@ public class ProductAction extends ActionSupport {
 	//尺寸初始化
 		public void check(){
 			if(product.getPid()!=null){
-				System.out.println("+++++++++++"+product.getPid());
 			//款式设置
 			if(mnum != null){	
 				productSize.setPid(product.getPid());
@@ -253,7 +257,73 @@ public class ProductAction extends ActionSupport {
 			}
 			}
 		}
-	
+		
+		
+	public void upsize() {
+		if(product.getPid()!=null){
+			//款式更新设置
+			if(mnum != null){	
+				productSize.setPid(product.getPid());
+				productSize.setPnum(mnum.intValue());
+				productSize.setPsize("M");
+				productSizeService.update(productSize);
+			}
+			if(snum != null){	
+				productSize.setPid(product.getPid());
+				productSize.setPnum(snum.intValue());
+				productSize.setPsize("S");
+				productSizeService.update(productSize);
+			}
+			if(lnum != null){	
+				productSize.setPid(product.getPid());
+				productSize.setPnum(lnum.intValue());
+				productSize.setPsize("L");
+				productSizeService.update(productSize);
+			}
+			if(xlnum != null){	
+				productSize.setPid(product.getPid());
+				productSize.setPnum(xlnum.intValue());
+				productSize.setPsize("XL");
+				productSizeService.update(productSize);
+			}
+			if(xxlnum != null){	
+				productSize.setPid(product.getPid());
+				productSize.setPnum(xxlnum.intValue());
+				productSize.setPsize("XXL");
+				productSizeService.update(productSize);
+			}
+			if(num38!=null){
+				productSize.setPnum(num38);
+				productSize.setPid(product.getPid());
+				productSizeService.update(productSize);
+			}
+			if(num40!=null){
+				productSize.setPnum(num40);
+				productSize.setPid(product.getPid());
+				productSizeService.update(productSize);
+			}
+			if(num41!=null){
+				productSize.setPnum(num41);
+				productSize.setPid(product.getPid());
+				productSizeService.update(productSize);
+			}
+			if(num42!=null){
+				productSize.setPnum(num42);
+				productSize.setPid(product.getPid());
+				productSizeService.update(productSize);
+			}
+			if(num43!=null){
+				productSize.setPnum(num43);
+				productSize.setPid(product.getPid());
+				productSizeService.update(productSize);
+			}
+			if(num39!=null){
+				productSize.setPnum(num39);
+				productSize.setPid(product.getPid());
+				productSizeService.update(productSize);
+			}
+			}
+	}
 	
 	
 	/****************************************
@@ -499,6 +569,22 @@ public class ProductAction extends ActionSupport {
 
 	public void setSlist(List<ProductSize> slist) {
 		this.slist = slist;
+	}
+
+	public LogiticsService getLogiticsService() {
+		return logiticsService;
+	}
+
+	public void setLogiticsService(LogiticsService logiticsService) {
+		this.logiticsService = logiticsService;
+	}
+
+	public List<Logitics> getLlist() {
+		return llist;
+	}
+
+	public void setLlist(List<Logitics> llist) {
+		this.llist = llist;
 	}
 	
 	/****image****/
