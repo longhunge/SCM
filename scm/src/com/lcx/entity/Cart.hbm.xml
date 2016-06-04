@@ -12,6 +12,8 @@
 		<!-- 非主键 类型可以不写 -->
 		<property column="pid" length="32" generated="never" lazy="false"
 			name="pid" type="java.lang.String" />
+		<property column="lid" length="32" generated="never" lazy="false"
+			name="lid" type="java.lang.String" />
 		<property column="tid" length="32" generated="never" lazy="false"
 			name="tid" type="java.lang.String" />
 		<property column="uid" length="32" generated="never" lazy="false"

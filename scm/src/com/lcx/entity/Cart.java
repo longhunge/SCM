@@ -8,15 +8,16 @@ public class Cart implements Serializable {
 	private String uid; //购物车所属的人
 	private Integer cnumber;//购物车内商品数量
 	private Double totle;//购物车的价格
-	private String tid;
-	private String bid;//
+	private String tid;//种类
+	private String bid;//品牌
 	private String sid;//款式
+	private String lid; //物流公司
 	
 	
 
 	
 	public Cart(String cid, String pid, String uid, Integer cnumber,
-			Double totle, String tid, String bid, String sid) {
+			Double totle, String tid, String bid, String sid, String lid) {
 		super();
 		this.cid = cid;
 		this.pid = pid;
@@ -26,10 +27,11 @@ public class Cart implements Serializable {
 		this.tid = tid;
 		this.bid = bid;
 		this.sid = sid;
+		this.lid = lid;
 	}
 
 
-	
+
 	public String getSid() {
 		return sid;
 	}
@@ -38,6 +40,18 @@ public class Cart implements Serializable {
 
 	public void setSid(String sid) {
 		this.sid = sid;
+	}
+
+
+
+	public String getLid() {
+		return lid;
+	}
+
+
+
+	public void setLid(String lid) {
+		this.lid = lid;
 	}
 
 

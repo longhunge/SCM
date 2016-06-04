@@ -33,7 +33,7 @@ public class CartAction extends ActionSupport {
 	//添加到购物车
 	public String addttocart(){
 		cartService.save(cart);
-		return "list";
+		return "detail";
 	}
 	
 	
@@ -98,7 +98,10 @@ public class CartAction extends ActionSupport {
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
-	
-	
-	
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 }

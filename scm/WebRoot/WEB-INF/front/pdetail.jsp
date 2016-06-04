@@ -93,8 +93,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
 	<script type="text/javascript">
 	function addtocart(){
-		document.forms[0].action = "<%=basePath %>front/user/cart.action";
-  		document.forms[0].submit();
+		document.forms["cart"].action = "<%=basePath %>cart/cart_addttocart.action";
+  		document.forms["cart"].submit();
 	}
 	</script>
   </head>
@@ -544,9 +544,9 @@ window.onload = function(){
 		</div>
 			<!-- start span1_of_1 -->
 			<div class="span1_of_1_des">
-				<form>
+				<form name="cart" method="post">
 				  <div class="desc1">
-				  
+				  <input type="hidden" name="cart.pid" value="${product.pid }">
 					<h3>${product.pname }</h3>
 					<p>服装简介在这里咯</p>
 					<h5>￥${product.price } <a href="#">联系客服</a></h5>
@@ -554,10 +554,10 @@ window.onload = function(){
 						<h4>详情选择:</h4>
 						<ul>
 							<li>物流公司:
-								<select>
+								<select name="cart.lid">
 								<c:if test="${!empty llist }">
 								<c:forEach var="logitics" items="${llist}">
-								<option name="logitics.lid" value="${logitics.lid }">${logitics.lname }</option>
+								<option  value="${logitics.lid }">${logitics.lname }</option>
 								</c:forEach>
 								</c:if>
 							</select>
@@ -569,7 +569,7 @@ window.onload = function(){
 								</c:forEach>
 								</select>
 							<li>
-						<div class="i_box">数量:<a href="javascript:;" class="J_minus">-</a><input name="" type="text" value="1" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
+						<div class="i_box">数量:<a href="javascript:;" class="J_minus">-</a><input name="cart.cnumber" type="text" value="1" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
 						</li>
 						</ul>
 						<ul>
