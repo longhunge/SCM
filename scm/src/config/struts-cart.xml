@@ -8,9 +8,6 @@
 	<action name="cart_*" class="com.lcx.action.CartAction" method="{1}">
 		<result name="detail">/WEB-INF/user/cart.jsp</result>
 		<result name="" type="redirectAction">
-			<param name="actionName">product_plistui</param>
-		</result>
-		<result name="" type="redirectAction">
 			<param name="actionName">product_redirect</param>
 		</result>
 	</action>
