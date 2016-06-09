@@ -1,4 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!-- EL表达式支持 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ page isELIgnored="false" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -17,16 +20,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="css/style_cart.css"/>
-<script type="text/javascript" src="js/demo.js"></script>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style_du.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<!-- start slider -->		
-<link href="css/slider.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
-<script type="text/javascript" src="js/jquery.cslider.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript" src="js/demo.js"></script>
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style_du.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- start slider -->		
+	<link href="css/slider.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
+	<script type="text/javascript" src="js/jquery.cslider.js"></script>
+	<script type="text/javascript">
 		$(function() {
 			$('#da-slider').cslider();
 		});
@@ -216,46 +219,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
     <tbody>
+    <c:if test="${!empty clist}">
+    <c:forEach var="cart" items="${clist}" varStatus="rowStatus">
       <tr>
         <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
-        <td class="goods"><img src="images/det_pic.jpg" alt=""/><span>Nike 女装</span></td>
-        <td class="price">59.88</td>
+        <c:forEach var="product" items="${plist }" varStatus="rowStatus">
+        <c:if test="${product.pid==cart.pid }">
+        <td class="goods"><img src="${product.img1 }" alt="${product.pname }"/><span>${product.pname }</span></td>
+        <td class="price" >${product.price}</td>
         <td class="count"><span class="reduce"></span>
-          <input class="count-input" type="text" value="1"/>
+          <input class="count-input" type="text" value="${cart.cnumber }"/>
           <span class="add">+</span></td>
-        <td class="subtotal">59.88</td>
+        <td class="subtotal">${cart.cnumber*product.price }</td>
+       </c:if>
+        </c:forEach>
         <td class="operation"><span class="delete">删除</span></td>
       </tr>
-      <tr>
-        <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
-        <td class="goods"><img src="images/det_pic.jpg" alt=""/><span>美女夏装</span></td>
-        <td class="price">388.50</td>
-        <td class="count"><span class="reduce"></span>
-          <input class="count-input" type="text" value="1"/>
-          <span class="add">+</span></td>
-        <td class="subtotal">388.50</td>
-        <td class="operation"><span class="delete">删除</span></td>
-      </tr>
-      <tr>
-        <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
-        <td class="goods"><img src="images/0001-2.jpg" alt=""/><span>阿迪达斯名牌正品</span></td>
-        <td class="price">48.50</td>
-        <td class="count"><span class="reduce"></span>
-          <input class="count-input" type="text" value="1"/>
-          <span class="add">+</span></td>
-        <td class="subtotal">48.50</td>
-        <td class="operation"><span class="delete">删除</span></td>
-      </tr>
-      <tr>
-        <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
-        <td class="goods"><img src="images/sale_pic3.jpg" alt=""/><span>韩版女装</span></td>
-        <td class="price">64.60</td>
-        <td class="count"><span class="reduce"></span>
-          <input class="count-input" type="text" value="1"/>
-          <span class="add">+</span></td>
-        <td class="subtotal">64.60</td>
-        <td class="operation"><span class="delete">删除</span></td>
-      </tr>
+      </c:forEach>
+      </c:if>
     </tbody>
   </table>
   <div class="foot" id="foot">

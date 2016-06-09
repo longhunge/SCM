@@ -7,5 +7,5 @@ import com.lcx.entity.Cart;
 
 public interface CartDao extends BaseDao<Cart> {
 
-	public List<Cart>finbypid(String pid);
+	public Cart finbypid(String pid);
 }

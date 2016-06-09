@@ -16,4 +16,6 @@ public interface CartService {
 	public Cart findbyid(Serializable id);
 	//查找列表
 	public List<Cart> findall();
+	
+	public Cart findbypid(String pid);
 }

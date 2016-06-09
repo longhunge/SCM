@@ -16,5 +16,6 @@ public interface ProductService {
 		public Product findbyid(Serializable id);
 		//查找列表
 		public List<Product> findall();
+		
 		public Product findbyproduct(Product product);
 }

@@ -15,11 +15,11 @@ public class CartDaoImpl extends BaseDaoImpl<Cart> implements CartDao {
 
 	@Resource
 	SessionFactory sessionFactory;
-	public List<Cart> finbypid(String pid) {
+	public Cart finbypid(String pid) {
 		
-		return (List<Cart>) sessionFactory.getCurrentSession()//
+		return (Cart) sessionFactory.getCurrentSession()//
 			  .createQuery("from Cart c where c.pid = ? ")//
-			  .setString(0, pid);
+			  .setString(0, pid).uniqueResult();
 	}
 
 }

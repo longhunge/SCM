@@ -1,5 +1,8 @@
 package com.lcx.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.lcx.entity.Brand;
@@ -12,6 +15,7 @@ import com.lcx.service.CartService;
 import com.lcx.service.ProductService;
 import com.lcx.service.ProductSizeService;
 import com.lcx.service.ProductTypeService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CartAction extends ActionSupport {
@@ -24,22 +28,38 @@ public class CartAction extends ActionSupport {
 	@Resource
 	private ProductSizeService productSizeService;
 	@Resource
+	
 	private CartService cartService;
 	private Product product; 
 	private Brand brand;
 	private ProductSize productSize;
 	private ProductType productType;
 	private Cart cart;
+	
+	private List<Product> plist = new ArrayList<Product>();
+	private List<Cart> clist;
+	ActionContext ctx = ActionContext.getContext();
 	//添加到购物车
+	@SuppressWarnings("unused")
 	public String addttocart(){
-		cartService.save(cart);
+		Cart cart1 =new Cart();
+		cart1 = cartService.findbypid(cart.getPid());
+		if(cart1==null){
+			cartService.save(cart);
+		}else{
+			cart.setCid(cart1.getCid());
+			cart.setCnumber(cart1.getCnumber()+cart.getCnumber());
+			cartService.update(cart);			
+		}
+		clist = cartService.findall();
+		if (!clist.isEmpty()) {
+			for (Cart ca : clist) {
+				plist.add(productService.findbyid(ca.getPid()));
+			}
+		}
+		ctx.put("plist", plist);
 		return "detail";
 	}
-	
-	
-	
-	
-	
 	
 	
 	
@@ -47,6 +67,23 @@ public class CartAction extends ActionSupport {
 	public CartService getCartService() {
 		return cartService;
 	}
+	
+	public List<Cart> getClist() {
+		return clist;
+	}
+
+	public void setClist(List<Cart> clist) {
+		this.clist = clist;
+	}
+
+	public List<Product> getPlist() {
+		return plist;
+	}
+
+	public void setPlist(List<Product> plist) {
+		this.plist = plist;
+	}
+
 	public void setCartService(CartService cartService) {
 		this.cartService = cartService;
 	}
