@@ -17,6 +17,7 @@ public class Orders implements Serializable{
 	private Integer pnum;//产品数量
 	private String address;
 	private String phone;
+	private String liuyan;//留言
 	
 	public Orders() {
 		super();
@@ -24,7 +25,7 @@ public class Orders implements Serializable{
 
 	public Orders(String oid, String pid, String uid, String lid,
 			String lstatus, String ostatus, String pname, Integer pnum,
-			String address, String phone) {
+			String address, String phone, String liuyan) {
 		super();
 		this.oid = oid;
 		this.pid = pid;
@@ -36,7 +37,18 @@ public class Orders implements Serializable{
 		this.pnum = pnum;
 		this.address = address;
 		this.phone = phone;
+		this.liuyan = liuyan;
 	}
+
+
+	public String getLiuyan() {
+		return liuyan;
+	}
+
+	public void setLiuyan(String liuyan) {
+		this.liuyan = liuyan;
+	}
+
 
 	public Integer getPnum() {
 		return pnum;

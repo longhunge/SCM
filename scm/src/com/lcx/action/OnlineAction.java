@@ -29,8 +29,7 @@ public class OnlineAction extends ActionSupport {
 			blist.add(brand);
 		}
 		return SUCCESS;	
-	}
-
+	}	
 	public void setBrandService(BrandService brandService) {
 		this.brandService = brandService;
 	}

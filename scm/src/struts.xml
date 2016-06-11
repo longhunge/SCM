@@ -22,4 +22,5 @@
 	<include file="config/struts-json.xml"></include>
 	<include file="config/struts-cart.xml"></include>
 	<include file="config/struts-logitics.xml"></include>
+	<include file="config/struts-orders.xml"></include>
 </struts>

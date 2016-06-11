@@ -40,11 +40,24 @@ public class CartAction extends ActionSupport {
 	private List<Cart> clist;
 	ActionContext ctx = ActionContext.getContext();
 	//添加到购物车
+	public String list(){
+		clist = cartService.findall();
+		if (!clist.isEmpty()) {
+			for (Cart ca : clist) {
+				plist.add(productService.findbyid(ca.getPid()));
+			}
+		}
+		ctx.put("plist", plist);
+		return "listui";
+	}
 	@SuppressWarnings("unused")
 	public String addttocart(){
 		Cart cart1 =new Cart();
 		cart1 = cartService.findbypid(cart.getPid());
 		if(cart1==null){
+			product=productService.findbyid(cart.getPid());
+			cart.setTid(product.getTid());
+			cart.setBid(product.getBid());
 			cartService.save(cart);
 		}else{
 			cart.setCid(cart1.getCid());
@@ -58,16 +71,23 @@ public class CartAction extends ActionSupport {
 			}
 		}
 		ctx.put("plist", plist);
-		return "detail";
+		return "list";
 	}
-	
-	
-	
+	public String delete(){
+		cartService.delete(cart.getCid());
+		return "list";
+	}
+	public String cartjson(){
+		Cart cart2 =new Cart();
+		cart2 = cartService.findbyid(cart.getCid());
+		cart2.setCnumber(cart.getCnumber());
+		cartService.update(cart2);
+		return SUCCESS;
+	}
 	
 	public CartService getCartService() {
 		return cartService;
 	}
-	
 	public List<Cart> getClist() {
 		return clist;
 	}

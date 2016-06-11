@@ -11,9 +11,5 @@
 			<!-- 返回UserInfo对象的 -->
 			<result name="success" type="json"></result>  
 		</action>
-		<action name="hotAction"  class="com.lcx.action.HotAction" method="checktype">
-			<!-- 返回UserInfo对象的 -->
-			<result name="success" type="json"></result>  
-		</action>
 	</package>
 </struts>

@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</c:if>
     
     <c:if test="${empty requestScope.user}">
-		<td><p><a  href="javaScript:ulogin()"class="tc">登录</a></p></td>
+		<td><p><a  href="javaScript:ulogin()" class="tc">登录</a></p></td>
 	</c:if>
 	</tr>
 </div>

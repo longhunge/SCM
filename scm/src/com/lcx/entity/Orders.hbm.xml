@@ -24,5 +24,7 @@
 			name="address" type="java.lang.String" />
 		<property column="phone" length="20" generated="never" lazy="false"
 			name="phone" type="java.lang.String" />
+		<property column="liuyan" length="255" generated="never" lazy="false"
+			name="liuyan" type="java.lang.String" />
 	</class>
 </hibernate-mapping>

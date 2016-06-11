@@ -198,6 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </div>
 </div>
+<form method="post" name="calist">
 <div class="catbox">
   <table id="cartTable">
     <thead>
@@ -218,22 +219,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 	</div>
+	
     <tbody>
     <c:if test="${!empty clist}">
     <c:forEach var="cart" items="${clist}" varStatus="rowStatus">
       <tr>
-        <td class="checkbox"><input class="check-one check" type="checkbox"/></td>
+        <td class="checkbox"><input class="check-one check" name="cartlist" value="${cart.cid }" type="checkbox"/></td>
         <c:forEach var="product" items="${plist }" varStatus="rowStatus">
         <c:if test="${product.pid==cart.pid }">
         <td class="goods"><img src="${product.img1 }" alt="${product.pname }"/><span>${product.pname }</span></td>
         <td class="price" >${product.price}</td>
         <td class="count"><span class="reduce"></span>
-          <input class="count-input" type="text" value="${cart.cnumber }"/>
+          <input class="count-input" type="text" id="pnum" name="cart.cnumber" value="${cart.cnumber }"/>
           <span class="add">+</span></td>
         <td class="subtotal">${cart.cnumber*product.price }</td>
+        <td class="operation"><span class="delete"><a href="<%=basePath %>cart/cart_delete.action?cart.cid=${cart.cid}">删除</a></span></td>
        </c:if>
-        </c:forEach>
-        <td class="operation"><span class="delete">删除</span></td>
+       </c:forEach>
       </tr>
       </c:forEach>
       </c:if>
@@ -242,7 +244,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="foot" id="foot">
     <label class="fl select-all"><input type="checkbox" class="check-all check"/>&nbsp;&nbsp;全选</label>
     <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
-    <div class="fr closing" onclick="getTotal();">结 算</div>
+    <div class="fr closing" onclick="getTotal();"><a href="javaScript:docount()" >结 算</a></div>
     <input type="hidden" id="cartTotalPrice" />
     <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
     <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
@@ -253,6 +255,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <span class="arrow">◆<span>◆</span></span> </div>
   </div>
 </div>
+</form>
+<script type="text/javascript">
+function docount(){
+  		document.calist.action = "<%=basePath %>orders/orders_save.action";
+  		document.calist.submit();
+}
+</script>
 <script type="text/javascript">
 //窗口效果
 //点击登录class为tc 显示

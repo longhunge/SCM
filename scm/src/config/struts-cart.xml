@@ -6,9 +6,9 @@
 <struts>
 	<package name="cart-action" namespace="/cart" extends="struts-default">
 	<action name="cart_*" class="com.lcx.action.CartAction" method="{1}">
-		<result name="detail">/WEB-INF/user/cart.jsp</result>
-		<result name="1" type="redirectAction">
-			<param name="actionName">product_redirect</param>
+		<result name="listui">/WEB-INF/user/cart.jsp</result>
+		<result name="list" type="redirectAction">
+			<param name="actionName">cart_list</param>
 		</result>
 	</action>
 	</package>

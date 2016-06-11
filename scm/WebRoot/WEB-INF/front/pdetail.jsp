@@ -563,9 +563,9 @@ window.onload = function(){
 							</select>
 							</li>
 							<li>尺寸:
-								<select>
+								<select name="cart.sid">
 								<c:forEach var="posize" items="${slist }">
-									<option name="cart.sid" value="${posize.sid}">${posize.psize }</option>
+									<option  value="${posize.sid}">${posize.psize }</option>
 								</c:forEach>
 								</select>
 							<li>
