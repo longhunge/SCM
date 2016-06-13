@@ -12,6 +12,8 @@
 		<!-- 非主键 类型可以不写 -->
 		<property column="pnum" length="32" generated="never" lazy="false"
 			name="pnum" type="java.lang.Integer" />
+		<property column="sid" length="32" generated="never" lazy="false"
+			name="sid" type="java.lang.String" />
 		<property column="pid" length="32" generated="never" lazy="false"
 			name="pid" type="java.lang.String" />
 		<property column="lid" length="32" generated="never" lazy="false"
@@ -20,6 +22,8 @@
 			name="uid" type="java.lang.String" />
 		<property column="pname" length="20" generated="never" lazy="false"
 			name="pname" type="java.lang.String" />
+		<property column="ostatus" length="20" generated="never" lazy="false"
+			name="ostatus" type="java.lang.String" />
 		<property column="address" length="20" generated="never" lazy="false"
 			name="address" type="java.lang.String" />
 		<property column="phone" length="20" generated="never" lazy="false"

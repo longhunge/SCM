@@ -21,5 +21,10 @@ public class CartDaoImpl extends BaseDaoImpl<Cart> implements CartDao {
 			  .createQuery("from Cart c where c.pid = ? ")//
 			  .setString(0, pid).uniqueResult();
 	}
-
+	
+	@Override
+	public List<Cart> findbyuid(String uid) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("From Cart c where c.uid = ?").setString(0, uid).list();
+	}
 }

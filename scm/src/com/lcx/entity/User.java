@@ -23,9 +23,18 @@ public class User implements Serializable {
 	Date u_birthday;// 生日
 	String u_status;// 状态
 	Double money;
+	String lid;
 	
 	
 	
+	public String getLid() {
+		return lid;
+	}
+
+	public void setLid(String lid) {
+		this.lid = lid;
+	}
+
 	public Double getMoney() {
 		return money;
 	}

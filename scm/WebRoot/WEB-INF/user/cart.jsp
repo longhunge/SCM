@@ -5,6 +5,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -39,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     <!-- Owl Carousel Assets -->
 		    <!-- Prettify -->
 		    <script src="js/owl.carousel.js"></script>
-		        <script>
+	        <script>
 		    $(document).ready(function() {
 		
 		      $("#owl-demo").owlCarousel({
@@ -75,7 +76,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- start header -->
 <div class="header_bg">
     <div align="right">
-		<p><a href="#" class="tc">登录</a></p>
+		 <c:if test="${!empty requestScope.user}">
+		<td>欢迎你，${sessionScope.user.u_name}！</td>，
+		<a  href="#####" class="tc">退出</a></p>
+	</c:if>
+    
+    <c:if test="${empty requestScope.user}">
+    	<%// response.sendRedirect(basePath + "loginuser_login.action");%>
+		<td><p><a  href="javaScript:ulogin()" class="tc">登录</a></p></td>
+	</c:if>
 	</div>
 </div>
 <div id="gray"></div>
@@ -265,11 +274,16 @@ function docount(){
 <script type="text/javascript">
 //窗口效果
 //点击登录class为tc 显示
-$(".tc").click(function(){
+/* $(".tc").click(function(){
 	$("#gray").show();
 	$("#popup").show();//查找ID为popup的DIV show()显示#gray
 	tc_center();
-});
+}); */
+function ulogin(){
+	$("#gray").show();
+	$("#popup").show();//查找ID为popup的DIV show()显示#gray
+	tc_center();
+}
 //点击关闭按钮
 $("a.guanbi").click(function(){
 	$("#gray").hide();

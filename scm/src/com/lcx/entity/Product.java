@@ -12,8 +12,8 @@ public class Product implements Serializable{
 	private String pid;
 	private String pname;
 	private double price;
-	private String intrduce;//介绍
-	private String bid;     //品牌
+	private String intrduce; //介绍
+	private String bid;      //品牌
 	private String tid;
 	private String img1;
 	private String img2;

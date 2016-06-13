@@ -196,7 +196,7 @@ input[type=text]:focus,textarea:focus {
 	font:700 18px/36px arial
 }
 .btn-go b {
-	background:url(img/sub.png) no-repeat scroll 0 1px transparent;
+	background:url(images/sub.png) no-repeat scroll 0 1px transparent;
 	width:127px;
 	height:36px;
 	float:left;
@@ -519,7 +519,7 @@ input[type=text]:focus,textarea:focus {
 }
 .address .new {
 	margin-left:103px;
-	background:url(img/add.png) no-repeat 0 -1px #fff;
+	background:url(images/add.png) no-repeat 0 -1px #fff;
 	width:90px;
 	height:25px;
 	display:inline-block;

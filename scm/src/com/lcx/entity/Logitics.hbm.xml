@@ -11,5 +11,7 @@
 		<!-- 非主键 类型可以不写 -->
 		<property column="lnmae" length="50" generated="never" lazy="false"
 			name="lname" type="java.lang.String" />
+		<property column="lprice" length="10" generated="never" lazy="false"
+			name="lprice" type="java.lang.Double" />
 	</class>
 </hibernate-mapping>

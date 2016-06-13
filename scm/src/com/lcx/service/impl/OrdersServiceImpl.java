@@ -43,4 +43,10 @@ public class OrdersServiceImpl implements OrdersService {
 		return ordersDao.findall();
 	}
 
+	@Override
+	public List<Orders> finbyuid(String uid) {
+		// TODO Auto-generated method stub
+		return ordersDao.finbyuid(uid);
+	}
+
 }

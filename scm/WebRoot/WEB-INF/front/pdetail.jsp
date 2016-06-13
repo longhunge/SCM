@@ -20,6 +20,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- start details -->
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/productviewgallery.css" media="all" />
+	<link href="css/style_du.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/slider.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
+	<script type="text/javascript" src="js/jquery.cslider.js"></script>
 	<script src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
 	<style type="text/css">
 		*{
@@ -97,21 +101,117 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		document.forms["cart"].submit();
 	}
 	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('#da-slider').cslider();
+		});
+	</script>
+	<script type="text/javascript">
+		
+	</script>
+		<!-- Owl Carousel Assets -->
+		<link href="css/owl.carousel.css" rel="stylesheet">
+		     <!-- Owl Carousel Assets -->
+		    <!-- Prettify -->
+		    <script src="js/owl.carousel.js"></script>
+		        <script>
+		    $(document).ready(function() {
+		
+		      $("#owl-demo").owlCarousel({
+		        items : 4,
+		        lazyLoad : true,
+		        autoPlay : true,
+		        navigation : true,
+			    navigationText : ["",""],
+			    rewindNav : false,
+			    scrollPerPage : false,
+			    pagination : false,
+    			paginationNumbers: false,
+		      });
+		
+		    });
+		    </script>
+		   	<!-- //Owl Carousel Assets -->
+			<!-- start top_js_button -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
   </head>
   
   <body>
-  <div class="header_bg">
-   <div class="wrap">
+  
+<!-- start header -->
+<div class="header_bg">
+   <tr>
+    <c:if test="${!empty requestScope.user}">
+		<td>欢迎你，${sessionScope.user.u_name}！</td>，
+		<a  href="#####" class="tc">退出</a></p>
+	</c:if>
+    
+    <c:if test="${empty requestScope.user}">
+		<td><p><a  href="javaScript:ulogin()" class="tc">登录</a></p></td>
+	</c:if>
+	</tr>
+</div>
+<div id="gray" ></div>
+<!------登录悬浮 ------->
+<div class="popup" id="popup">
+
+	<div class="top_nav" id='top_nav'>
+		<div align="center">
+			<i></i>
+			<span>登录账号</span>
+			<a class="guanbi"></a>
+		</div>
+	</div>
+	<form method="POST" name="user" action="<%=basePath%>loginuser_login.action">
+	<div class="min">
+	
+		<div class="tc_login">
+		
+			<div class="left">
+				<h4 align="center">欢迎登录夜雪商城</h4>
+				<div align="center"><img src="images/zfb_2yuan.jpg" width="150" height="150" /></div>
+				
+			</div>  
+			
+			<div class="right">
+				
+					<div align="center">
+						<input type="text" name="user.u_account" id="name" required="required" placeholder="用户名" autocomplete="off" class="input_yh">
+						<input type="password" name="user.u_pwd" id="pass" required="required" placeholder="密码" autocomplete="off" class="input_mm">
+					</div>
+					<dd>
+						<div align="center"><a href="">遇到登录问题</a></div>
+					</dd>
+					<div align="center">
+						<input type="submit" class="button" title="Sign In" value="登录">
+					</div>
+				
+				<dd>
+					<div align="center"><a href="#" target="_blank">立即注册</a></div>
+				</dd>
+				<hr align="center" />
+			
+			</div>
+				</div>
+	
+	</div>
+</form>   
+
+</div>
+
+<div class="header_bg">	
+<div class="wrap">
 	<div class="header">
 		<div class="logo">
-			<a href="index.html"><img src="<%=basePath%>images/logo.png" alt=""/> </a>
+			<a href="index.html"><img src="images/logo.jpg" alt=""/></a>
 		</div>
 		<div class="h_icon">
 		<ul class="icon1 sub-icon1">
-			<li><a class="active-icon c1" href="#"><i>$300</i></a>
+			<li><a class="active-icon c1" href="#"><i>$0</i></a>
 				<ul class="sub-icon1 list">
-					<li><h3>shopping cart empty</h3><a href=""></a></li>
-					<li><p>if items in your wishlit are missing, <a href="contact.html">contact us</a> to view them</p></li>
+					<li><h3>购物车</h3><a href=""></a></li>
+					<li><p>查看购物车 </p></li>
 				</ul>
 			</li>
 		</ul>
@@ -122,6 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<input type="submit" value="">
     		</form>
 		</div>
+		
 		<div class="clear"></div>
 	</div>
 </div>
@@ -627,5 +728,62 @@ window.onload = function(){
 	</div>
 </div>
 </div>
+<script type="text/javascript">
+//窗口效果
+//点击登录class为tc 显示
+/* $(".tc").click(function(){
+	$("#gray").show();
+	$("#popup").show();//查找ID为popup的DIV show()显示#gray
+	tc_center();
+}); */
+function ulogin(){
+	$("#gray").show();
+	$("#popup").show();//查找ID为popup的DIV show()显示#gray
+	tc_center();
+}
+//点击关闭按钮
+$("a.guanbi").click(function(){
+	$("#gray").hide();
+	$("#popup").hide();//查找ID为popup的DIV hide()隐藏
+})
+
+//窗口水平居中
+$(window).resize(function(){
+	tc_center();
+});
+
+function tc_center(){
+	var _top=($(window).height()-$(".popup").height())/5;
+	var _left=($(window).width()-$(".popup").width())/2;
+	
+	$(".popup").css({top:_top,left:_left});
+}	
+</script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+
+	$(".top_nav").mousedown(function(e){ 
+		$(this).css("cursor","move");//改变鼠标指针的形状 
+		var offset = $(this).offset();//DIV在页面的位置 
+		var x = e.pageX - offset.left;//获得鼠标指针离DIV元素左边界的距离 
+		var y = e.pageY - offset.top;//获得鼠标指针离DIV元素上边界的距离 
+		$(document).bind("mousemove",function(ev){ //绑定鼠标的移动事件，因为光标在DIV元素外面也要有效果，所以要用doucment的事件，而不用DIV元素的事件 
+		
+			$(".popup").stop();//加上这个之后 
+			
+			var _x = ev.pageX - x;//获得X轴方向移动的值 
+			var _y = (ev.pageY - y);//获得Y轴方向移动的值 
+		
+			$(".popup").animate({left:_x+"px",top:_y+"px"},10); 
+		}); 
+
+	}); 
+
+	$(document).mouseup(function() { 
+		$(".popup").css("cursor","default"); 
+		$(this).unbind("mousemove"); 
+	});
+}) 
+</script>
   </body>
 </html>

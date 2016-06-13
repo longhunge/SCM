@@ -6,10 +6,10 @@
 <struts>
 	<package name="orders-action" namespace="/orders" extends="struts-default">
 	<action name="orders_*" class="com.lcx.action.OrdersAction" method="{1}">
-		<result name="{1}">/WEB-INF/back/brand/{1}.jsp</result>
-		<!-- <result name="list" type="redirectAction">
-			<param name="actionName">brand_blistui</param>
-		</result> -->
+		<result name="{1}">/WEB-INF/user/{1}.jsp</result>
+		<result name="listu" type="redirectAction">
+			<param name="actionName">orders_listui</param>
+		</result>
 	</action>
 	</package>
 </struts>

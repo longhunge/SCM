@@ -77,7 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="header_bg">
    <tr>
     <c:if test="${!empty requestScope.user}">
-		<td>欢迎你，${sessionScope.user.u_name}！</td>
+		<td>欢迎你，${sessionScope.user.u_name}！</td>，
+		<a  href="#####" class="tc">退出</a></p>
 	</c:if>
     
     <c:if test="${empty requestScope.user}">

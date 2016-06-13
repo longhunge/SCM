@@ -9,15 +9,26 @@ import java.io.Serializable;
 public class Logitics implements Serializable {
 	private String lid;	//物流公司id
 	private String lname;// 物流公司名称
-	
+	private Double lprice;
 	public Logitics() {
 		super();
 	}
-	public Logitics(String lid, String lname) {
+	
+	public Logitics(String lid, String lname, Double lprice) {
 		super();
 		this.lid = lid;
 		this.lname = lname;
+		this.lprice = lprice;
 	}
+
+	public Double getLprice() {
+		return lprice;
+	}
+
+	public void setLprice(Double lprice) {
+		this.lprice = lprice;
+	}
+
 	public String getLid() {
 		return lid;
 	}

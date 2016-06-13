@@ -9,6 +9,7 @@ public interface OrdersService {
 	public void save(Orders entity);
 	public void update(Orders entity);
 	public void delete(Serializable id) ; 
-	Orders findbyid(Serializable id) ;
+	public Orders findbyid(Serializable id) ;
 	public List<Orders> findall();
+	public List<Orders> finbyuid(String uid);
 }

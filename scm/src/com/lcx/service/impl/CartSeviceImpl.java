@@ -48,4 +48,10 @@ public class CartSeviceImpl implements CartService {
 		return (Cart) cartDao.finbypid(pid);
 	}
 
+	@Override
+	public List<Cart> finbyuid(String uid) {
+		// TODO Auto-generated method stub
+		return cartDao.findbyuid(uid);
+	}
+
 }

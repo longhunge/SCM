@@ -1,6 +1,7 @@
 package com.lcx.entity;
 
 import java.io.Serializable;
+import java.util.List;
 /**
  * 订单
  * @author lcx
@@ -17,15 +18,17 @@ public class Orders implements Serializable{
 	private Integer pnum;//产品数量
 	private String address;
 	private String phone;
+	private String sid;
 	private String liuyan;//留言
+	private Double pay;
 	
 	public Orders() {
 		super();
 	}
-
+	
 	public Orders(String oid, String pid, String uid, String lid,
 			String lstatus, String ostatus, String pname, Integer pnum,
-			String address, String phone, String liuyan) {
+			String address, String phone, String sid, String liuyan, Double pay) {
 		super();
 		this.oid = oid;
 		this.pid = pid;
@@ -37,9 +40,30 @@ public class Orders implements Serializable{
 		this.pnum = pnum;
 		this.address = address;
 		this.phone = phone;
+		this.sid = sid;
 		this.liuyan = liuyan;
+		this.pay = pay;
+	}
+	
+	public String listui(){
+		
+		return "list";
+	}
+	public String getSid() {
+		return sid;
 	}
 
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
+
+	public Double getPay() {
+		return pay;
+	}
+
+	public void setPay(Double pay) {
+		this.pay = pay;
+	}
 
 	public String getLiuyan() {
 		return liuyan;
@@ -125,7 +149,5 @@ public class Orders implements Serializable{
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	 
-
+	}	 
 }

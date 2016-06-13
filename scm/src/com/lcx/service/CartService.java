@@ -18,4 +18,6 @@ public interface CartService {
 	public List<Cart> findall();
 	
 	public Cart findbypid(String pid);
+	
+	public List<Cart> finbyuid(String uid);
 }

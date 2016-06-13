@@ -11,6 +11,8 @@
 		<!-- 非主键 类型可以不写 -->
 		<property column="u_account" length="20" generated="never" lazy="false"
 			name="u_account" type="java.lang.String" />
+		<property column="lid" length="20" generated="never" lazy="false"
+			name="lid" type="java.lang.String" />
 		<property column="u_name" length="20" generated="never" lazy="false"
 			name="u_name" type="java.lang.String" />
 		<property column="u_password" length="20" generated="never" lazy="false"

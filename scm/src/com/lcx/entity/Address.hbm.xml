@@ -12,6 +12,10 @@
 		<property column="uid" length="32" generated="never" lazy="false"
 			name="uid" type="java.lang.String" />
 		<property column="uaddress" length="255" generated="never" lazy="false"
-			name="uaddress" type="java.lang.String" />		
+			name="uaddress" type="java.lang.String" />	
+		<property column="uname" length="25" generated="never" lazy="false"
+			name="uname" type="java.lang.String" />		
+		<property column="uphone" length="25" generated="never" lazy="false"
+			name="uphone" type="java.lang.String" />		
 	</class>
 </hibernate-mapping>
