@@ -72,20 +72,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 </head>
 <body>
-
-<!-- start header -->
-<div class="header_bg">
    <tr>
     <c:if test="${!empty requestScope.user}">
-		<td>欢迎你，${sessionScope.user.u_name}！</td>，
-		<a  href="#####" class="tc">退出</a></p>
+		<td>欢迎你，${sessionScope.user.u_name}！</td>
+		<a  href="#####" class="tc">退出</a>
 	</c:if>
     
     <c:if test="${empty requestScope.user}">
-		<td><p><a  href="javaScript:ulogin()" class="tc">登录</a></p></td>
+		<td><a  href="javaScript:ulogin()" class="tc">登录</a></td>	
 	</c:if>
+	||<td><a  href="<%=basePath %>cart/cart_list.action" >购物车</a></td>
+	||<td><a  href="<%=basePath %>orders/orders_listui.action" >订单</a></td>
 	</tr>
-</div>
+
 <div id="gray" ></div>
 <!------登录悬浮 ------->
 <div class="popup" id="popup">
@@ -115,17 +114,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="password" name="user.u_pwd" id="pass" required="required" placeholder="密码" autocomplete="off" class="input_mm">
 					</div>
 					<dd>
-						<div align="center"><a href="">遇到登录问题</a></div>
+						<div align="center"><a href="">遇到登录问题？</a></div>
 					</dd>
 					<div align="center">
 						<input type="submit" class="button" title="Sign In" value="登录">
 					</div>
 				</form>   
 				<dd>
-					<div align="center"><a href="#" target="_blank">立即注册</a></div>
+					<div align="center"><a href="<%=basePath %>reg.jsp" target="_blank">立即注册</a></div>
 				</dd>
-				<hr align="center" />
-			
+				<hr align="center" />	
 			</div>
 		
 		</div>
@@ -142,11 +140,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="h_icon">
 		<ul class="icon1 sub-icon1">
-			<li><a class="active-icon c1" href="#"><i>$0</i></a>
-				<ul class="sub-icon1 list">
+			<li><a class="active-icon c1" href="<%=basePath %>cart/cart_list.action"><i></i></a>
+				<!-- <ul class="sub-icon1 list">
 					<li><h3>购物车</h3><a href=""></a></li>
 					<li><p>查看购物车 </p></li>
-				</ul>
+				</ul> -->
 			</li>
 		</ul>
 		</div>

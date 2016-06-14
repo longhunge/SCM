@@ -17,7 +17,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.junit.Test;
 
+import com.lcx.entity.Logitics;
 import com.lcx.entity.User;
+import com.lcx.service.LogiticsService;
 import com.lcx.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -26,22 +28,34 @@ public class UserAction extends ActionSupport {
 	
 	@Resource
 	private UserService userService;
+	@Resource
+	LogiticsService logiticsService;
+	
+	private List<Logitics> llist;
 	private List<User> list;
 	private User user;
 	private String[] selectRaw;
-	private File importExcel;
-	
-	
+	private File importExcel;	
 	private String importExcelContentType;
-	private String importExcelFileName;
-	
+	private String importExcelFileName;	
 	private File headImg;
 	private String headImgContentType;
 	private String headImgFileName;
-	
 	ActionContext ctx = ActionContext.getContext();
 	
-	
+	public String addtologitics(){
+		user = userService.findbyid(user.getU_id()); 
+		llist = logiticsService.findall();
+		return "addtologitics";
+	}
+	public String ladd(){
+		User u = new User();
+		u = userService.findbyid(user.getU_id());
+		u.setLid(user.getLid());
+		u.setU_privilege("物流管理");
+		userService.update(u);
+		return"redirecter";
+	}
 	public String login(){
 		User loginUser=userService.findUser(user);
 		if(user!=null){
@@ -84,6 +98,9 @@ public class UserAction extends ActionSupport {
 			
 			try {
 				//编码转换
+				user.setU_privilege(new String(user.getU_privilege().getBytes("ISO-8859-1"),"UTF-8"));
+				user.setU_sex(new String(new String(user.getU_sex().getBytes("ISO-8859-1"),"UTF-8")));
+				//new String(user.getU_name().getBytes("ISO-8859-1"),"UTF-8")
 				user.setU_name(new String(user.getU_name().getBytes("ISO-8859-1"),"UTF-8"));
 				user.setU_account(new String(user.getU_account().getBytes("ISO-8859-1"),"UTF-8"));
 			} catch (UnsupportedEncodingException e) {
@@ -113,12 +130,14 @@ public class UserAction extends ActionSupport {
 	public String edit() {
 		try {
 			//编码转换
+			user.setU_privilege(new String(user.getU_privilege().getBytes("ISO-8859-1"),"UTF-8"));
+			user.setU_sex(new String(new String(user.getU_sex().getBytes("ISO-8859-1"),"UTF-8")));
 			user.setU_name(new String(user.getU_name().getBytes("ISO-8859-1"),"UTF-8"));
 			user.setU_account(new String(user.getU_account().getBytes("ISO-8859-1"),"UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}	
 		userService.update(user);
 		return "redirecter";
 	}
@@ -179,9 +198,10 @@ public class UserAction extends ActionSupport {
 
 	}
 	public File getImportExcel() {
+		
 		return importExcel;
 	}
-
+	
 	public void setImportExcel(File importExcel) {
 		this.importExcel = importExcel;
 	}
@@ -249,6 +269,15 @@ public class UserAction extends ActionSupport {
 
 	public void setHeadImg(File headImg) {
 		this.headImg = headImg;
+	}
+	public List<Logitics> getLlist() {
+		return llist;
+	}
+	public void setLlist(List<Logitics> llist) {
+		this.llist = llist;
+	}
+	public void setLogiticsService(LogiticsService logiticsService) {
+		this.logiticsService = logiticsService;
 	}
 
 }

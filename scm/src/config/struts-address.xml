@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="address-action" namespace="/address" extends="struts-default">
+	<action name="address_*" class="com.lcx.action.AddressAction" method="{1}">
+		<result name="{1}">/WEB-INF/user/{1}.jsp</result>
+		<result name="list" type="redirectAction">
+			<param name="actionName">address_listu</param>
+		</result>
+	</action>
+	</package>
+</struts>

@@ -10,41 +10,31 @@ import java.util.List;
 public class Orders implements Serializable{
 	private String oid; //订单id
 	private String pid; //产品
-	private String uid;  //用户
-	private String lid;    //物流公司
-	private String lstatus;//物流状态：发货中，已收货，运输中，退货中
-	private String ostatus;//订单状态：待付款，已付款，待收货
-	private String pname;
-	private Integer pnum;//产品数量
+	private String uid; //用户
+	private String lid; //物流公司
+	private String lstatus; //物流状态：发货中，已收货，运输中，退货中
+	private String ostatus; //订单状态：待付款，已付款，待收货
+	private String pname; //产品名称
+	private Integer pnum; //产品数量
+	private String uname; //用户
 	private String address;
 	private String phone;
 	private String sid;
-	private String liuyan;//留言
+	private String liuyan; //留言
 	private Double pay;
 	
 	public Orders() {
 		super();
 	}
 	
-	public Orders(String oid, String pid, String uid, String lid,
-			String lstatus, String ostatus, String pname, Integer pnum,
-			String address, String phone, String sid, String liuyan, Double pay) {
-		super();
-		this.oid = oid;
-		this.pid = pid;
-		this.uid = uid;
-		this.lid = lid;
-		this.lstatus = lstatus;
-		this.ostatus = ostatus;
-		this.pname = pname;
-		this.pnum = pnum;
-		this.address = address;
-		this.phone = phone;
-		this.sid = sid;
-		this.liuyan = liuyan;
-		this.pay = pay;
+	public String getUname() {
+		return uname;
 	}
-	
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
 	public String listui(){
 		
 		return "list";

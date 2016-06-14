@@ -11,9 +11,11 @@
 		<!-- 非主键 类型可以不写 -->
 		<property column="oid" length="32" generated="never" lazy="false"
 			name="oid" type="java.lang.String" />
+		<property column="aid" length="32" generated="never" lazy="false"
+			name="aid" type="java.lang.String" />
 		<property column="lid" length="32" generated="never" lazy="false"
 			name="lid" type="java.lang.String" />
-		<property column="wostatus" length="255" generated="never" lazy="false"
+		<property column="wostatus" length="25" generated="never" lazy="false"
 			name="wostatus" type="java.lang.String" />		
 	</class>
 </hibernate-mapping>

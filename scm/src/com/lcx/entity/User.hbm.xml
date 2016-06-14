@@ -27,9 +27,9 @@
 			name="headImg" type="java.lang.String" />
 		<property column="user_rank" name="u_rank" type="int" />
 		<property column="user_birthday" name="u_birthday" type="java.util.Date" />
-		<property column="u_status" length="8" generated="never" lazy="false"
+		<property column="u_status" length="20" generated="never" lazy="false"
 			name="u_status" type="java.lang.String" />
-		<property column="u_privilege" length="8" generated="never" lazy="false"
+		<property column="u_privilege" length="20" generated="never" lazy="false"
 			name="u_privilege" type="java.lang.String" />
 		<property column="money" length="8" generated="never" lazy="false"
 			name="money" type="java.lang.Double" />

@@ -39,6 +39,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <!-- Custom Fonts -->
     <link href="<%=basePath %>bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+
+		function doImportExcel(){
+	  		document.forms[0].action = "<%=basePath %>back/user_importExcel.action";
+	  		document.forms[0].submit();
+	  	}
+		function doExportExcel(){
+			document.forms[0].action = "<%=basePath %>back/user_exportExcel.action";
+	  		document.forms[0].submit();
+		}
+		function doDeleteAll(){
+      		document.forms[0].action = "<%=basePath %>back/user_deleteSelected.action";
+      		document.forms[0].submit();
+      	}
+		
+	   function funCheckAll(obj){  
+	    var items = document.getElementsByTagName("input");  
+	    for(var i=0;i<items.length;i++){  
+	        if(items[i].type=="checkbox"&& items[i].name=="selectRaw")  
+	            items[i].checked = obj.checked;  
+	    	}  
+		}		
+	 </script>
+	 
   </head>
   
   
@@ -55,9 +79,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<%=basePath %>table.html">后台管理系统</a>
+                <a class="navbar-brand" href="<%=basePath %>table.html">物流管理系统</a>
             </div>
-            <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="<%=basePath %>#">
@@ -136,24 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       
                         <li>
                             <a href="<%=basePath %>back/user_listui.action"><i class="fa fa-dashboard fa-fw"></i>主页</a>
-                        </li>
-						<li>
-                            <a href="<%=basePath %>product/product_plistui.action"><i class="fa fa-pencil fa-fw"></i> 商品管理</a>
-                        </li>
-                        <li>
-                            <a href="<%=basePath %>brand/brand_blistui.action"><i class="fa fa-bar-chart-o fa-fw"></i>品牌管理</span></a>
-                        </li>
-						<li>
-                            <a href="<%=basePath %>logitics/logitics_listui.action"><i class="fa fa-truck fa-fw"></i> 物流公司管理</a>
-                        </li>
-						<li>
-                            <a href="<%=basePath %>type/type_tlistui.action"><i class="fa fa-android fa-fw"></i>商品类别管理</a>
-                        </li>
-                        <li>
-                            <a href="<%=basePath %>order/order_olistui.action"><i class="fa fa-table fa-fw"></i> -订单管理</a>
-                        </li>
-
-
+                        </li>				
                     </ul>
                 </div>
             </div>
@@ -166,44 +172,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            	商品品牌管理
+                            	物流信息管理
                         </div>
-						<form name="form1" action="" method="post" enctype="multipart/form-data">
-						<div class="panel-body col-lg-12">
-						<div class="row show-grid from-group">
-						<div class="input-group  col-lg-6">
-						<table cellspacing="4px">
-						<tr>
-                        	<td>   
-                                 <a href="<%=basePath %>logitics/logitics_addui.action"> <button type="button" class="btn btn-inline btn-default">增加</button></a>
-                            </td>
-                            </tr>
-                            </table>
-							</div>
-						</div>
-						<hr/>
-						</div>
-						
+						<form name="form1" action="" method="post" enctype="multipart/form-data">	
+						<hr/>			
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>公司名称</th>          				
+										<th><label class="checkbox-inline"><input type="checkbox" onclick="funCheckAll(this);">全选</label></th>
+                                            <th>订单号</th>
+											<th>地址</th>
+                                            <th>收件人</th>
+											<th>手机号</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="logitics" items="${list}" varStatus="rowStatus">   
-                                      	<c:if test="${not empty list}">
-                                      	 
+                                    <c:forEach var="worder" items="${wolist}" varStatus="rowStatus">  
+                                     <c:forEach var="order" items="${olist}" varStatus="rowStatus">
+                                      <c:if test="${order.oid eq worder.oid }">
                                         <tr class="gradeC">
-                                         	<td><c:out value="${logitics.lname}"/></td>
-                        
-                                            <td class="center"><a href="<%=basePath %>logitics/logitics_delete.action?logitics.lid=${logitics.lid}">删除</a>||<a href="<%=basePath %>logitics/logitics_editui.action?logitics.lid=${logitics.lid}">编辑</a></td> 	
-                                        </tr> 
-                                        </c:if> 
-                                       
+										    <td><input class="checkbox" name ="selectRaw" value="${user.u_id}" type="checkbox"></td>
+                                            <td><c:out value="${worder.woid}"/></td>
+											<td><c:out value="${order.address}"/></td>
+                                            <td><c:out value="${order.uname}"/></td>
+                                            <td><c:out value="${order.phone}"/></td>
+                                            <td class="center">
+                                              <a href="<%=basePath %>back/user_delete.action?user.u_id=${user.u_id}">删除</a>
+                                            ||<a href="<%=basePath %>back/user_editui.action?user.u_id=${user.u_id}">更新状态</a>
+                                            </td>
+                                        </tr>
+                                        </c:if>  
+                                        </c:forEach>
                                       </c:forEach>                
                                     </tbody>
                                 </table>

@@ -28,6 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<%=basePath %>js/bootstrapDatepickr-1.0.0.css">
 	<script src="<%=basePath %>js/jquery-1.7.2.min.js"></script>
+	<script>
+			$(document).ready(function() {
+				$("#calendar").bootstrapDatepickr({date_format: "Y-d-m"});
+			});
+	</script>	
 	
 </head>
 
@@ -134,8 +139,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		</nav>
-
-		<!-------------------#######strart#########------------------------>
 		<div id="page-wrapper">
 			<!-- /.row -->
 			<div class="row">
@@ -146,11 +149,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-6">
-									<form role="form" action="<%=basePath%>type/type_tedit.action">
-										<input type="hidden" value="${ttype.tid }" name="ttype.tid">
+									<form role="form" action="<%=basePath%>back/user_ladd.action">
+										<input type="hidden" value="${user.u_id }" name="user.u_id">
 										<div class="form-group">
-											<label>类别: </label> <input class="form-control" type="text"
-												name="ttype.tname" value="${ttype.tname}">
+											<label>姓名</label> <input class="form-control" readonly="readonly" name="user.u_name" value="${user.u_name}">
+										</div>
+										<div class="form-group">
+											<label>物流公司</label> 
+											<select class="form-control" name="user.lid">
+												<c:forEach var="logitics" items="${llist}">
+												<option value="${logitics.lid }">${logitics.lname}</option>
+												</c:forEach>
+											</select>
 										</div>
 										<button type="submit" class="btn btn-default">修改</button>
 										<a href="<%=basePath %>back/user_listui.action"><button type="reset" class="btn btn-default">取消</button></a>

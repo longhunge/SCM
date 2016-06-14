@@ -7,6 +7,14 @@
 	<package name="loginuseraction" namespace="/" extends="struts-default">
 	<action name="loginuser_*" class="com.lcx.action.LoginUserAction" method="{1}">
 	<result name="login" >login.jsp</result>
+	<result name="userlistui" type="chain">
+		<param name="actionName">user_listui</param>
+		<param name="namespace">/back</param>
+	</result>
+	<result name="wuliulistui" type="chain">
+		<param name="actionName">wuliu_listui</param>
+		<param name="namespace">/wuliu</param>
+	</result>
 	</action>
 	</package>
 </struts>

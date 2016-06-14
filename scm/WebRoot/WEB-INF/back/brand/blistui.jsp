@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                       
-                           <li>
+                          <li>
                             <a href="<%=basePath %>back/user_listui.action"><i class="fa fa-dashboard fa-fw"></i>主页</a>
                         </li>
 						<li>
@@ -150,9 +150,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a href="<%=basePath %>type/type_tlistui.action"><i class="fa fa-android fa-fw"></i>商品类别管理</a>
                         </li>
                         <li>
-                            <a href="<%=basePath %>orders/order_olistui.action"><i class="fa fa-table fa-fw"></i> -订单管理</a>
+                            <a href="<%=basePath %>order/order_olistui.action"><i class="fa fa-table fa-fw"></i> -订单管理</a>
                         </li>
-
                     </ul>
                 </div>
             </div>

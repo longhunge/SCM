@@ -62,7 +62,9 @@ public class OrdersAction extends ActionSupport {
 	String[] oilist;
 	String  aid;
 	Double total = 0.00;
+	
 	public String save(){
+		
 		if(cartlist != null){
 			for (String cid : cartlist) {
 				slist = productSizeService.findall();
@@ -72,9 +74,11 @@ public class OrdersAction extends ActionSupport {
 				cart = cartService.findbyid(cid);
 				Orders od = new Orders();
 				od.setPid(cart.getPid());
+				
 				Product product = new Product();
-				product = productService.findbyid(cart.getPid());
+				product = productService.findbyid(cart.getPid());				
 				plist.add(product);
+				od.setPname(product.getPname());
 				od.setPay(product.getPrice()*cart.getCnumber());
 				od.setPnum(cart.getCnumber());
 				od.setLid(cart.getLid());
@@ -88,12 +92,27 @@ public class OrdersAction extends ActionSupport {
 					od.setUid(user.getU_id());
 				}	
 				
-				llist = logiticsService.findall();
-				olist.add(od);
+				llist = logiticsService.findall();				
 				ordersService.save(od);
 				cartService.delete(cid);
+				olist.add(od);
 			}
 			
+		}else{
+			User user = new User();
+			if (ctx.getSession().get("user") != null) {					
+				user = (User) ctx.getSession().get("user");
+				alist = addressService.findbyuid(user.getU_id());
+			}
+			llist = logiticsService.findall();
+			blist = brandService.findall();
+//			ActionContext actionContext = ActionContext.getContext();
+//			User user = new User();
+//			user = (User) actionContext.getSession().get("user");		
+			plist = productService.findall();
+			orders = ordersService.findbyid(orders.getOid());
+			System.out.println("+++++++++="+orders.getPnum());
+			olist.add(orders);
 		}
 		return "save";
 	}
@@ -101,9 +120,11 @@ public class OrdersAction extends ActionSupport {
 		ordersService.delete(orders.getOid());
 		return "listu";
 	}
+	
 	public String addto(){
 		User user = new User();
 		user = (User) ctx.getSession().get("user");
+	
 		for(String oid : oilist){
 			Orders od = new Orders();
 			od = ordersService.findbyid(oid);
@@ -111,11 +132,9 @@ public class OrdersAction extends ActionSupport {
 			od.setLid(orders.getLid());
 			if(!aid.isEmpty()){
 				address = addressService.findbyid(aid);
-				System.out.println(aid);
-				System.out.println(address.getUaddress());
 				od.setAddress(address.getUaddress());
 				od.setPhone(address.getUphone());
-				od.setPname(address.getUname());
+				od.setUname(address.getUname());
 				//设置物流订单
 				WOrder wo=new WOrder();
 				wo.setOid(od.getOid());
@@ -124,8 +143,17 @@ public class OrdersAction extends ActionSupport {
 				wOrderService.save(wo);
 				od.setOstatus("未发货");
 			}
+		
 			ordersService.update(od);
+			
 		}
+	
+		return "listu";
+	}
+	public String add(){
+		User user = new User();
+		user = (User) ctx.getSession().get("user");
+		
 		return "listu";
 	}
 	
@@ -134,11 +162,12 @@ public class OrdersAction extends ActionSupport {
 		user = (User) ctx.getSession().get("user");
 		ctx.put("user", user);
 		olist = ordersService.finbyuid(user.getU_id());
-		for(Orders od : olist){
-			Product pd = new Product();
-			pd = productService.findbyid(od.getPid());
-			plist.add(pd);
-		}
+		plist = productService.findall();
+//		for(Orders od : olist){
+//			Product pd = new Product();
+//			pd = productService.findbyid(od.getPid());
+//			plist.add(pd);
+//		}
 		return "listui";
 	}
 	

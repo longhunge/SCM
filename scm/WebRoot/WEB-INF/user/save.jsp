@@ -11,8 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
- 
+<title>订单详情</title>
 <link rel="stylesheet" href="<%=basePath %>css/tasp.css" />
 <link href="<%=basePath %>css/orderconfirm.css" rel="stylesheet" />
 
@@ -70,7 +69,7 @@ function dosubmit(){
  </ul>
 
 <div class="address-bar">
- <a href="#######" class="new J_MakePoint" id="J_NewAddressBtn">使用新地址</a>
+ <a href="<%=basePath %>address/address_addui.action" class="new J_MakePoint" id="J_NewAddressBtn">使用新地址</a>
  </div>
 
 <!-- </form> -->
@@ -82,6 +81,7 @@ function dosubmit(){
  <caption style="display: none">统一下单订单信息区域</caption>
  <thead>
  <tr>
+ <th class="s-title">选择<hr/></th>
  <th class="s-title">商品<hr/></th>
  <th class="s-price">单价(元)<hr/></th>
  <th class="s-amount">数量<hr/></th>
@@ -90,11 +90,11 @@ function dosubmit(){
  </tr>
  </thead>
 <tbody data-spm="3" class="J_Shop" data-tbcbid="0" data-outorderid="47285539868"  data-isb2c="false" data-postMode="2" data-sellerid="1704508670">
-<tr class="first"><td colspan="5"></td></tr>
+<tr class="first"><td colspan="6"></td></tr>
 <tr class="shop blue-line">
  <td colspan="3">
  </td>
- <td colspan="2" class="promo">
+ <td colspan="3" class="promo">
  <div>
    <ul class="scrolling-promo-hint J_ScrollingPromoHint">
        </ul>
@@ -102,15 +102,13 @@ function dosubmit(){
  </td>
 </tr>
  <c:if test="${!empty olist}">
- <c:forEach var="product" items="${plist }">
+ <c:forEach var="order" items="${olist }">
+<tr class="item">
 
- <tr class="item">
-<td>
-<c:forEach var="order" items="${olist }">
+<c:forEach var="product" items="${plist }">
 <c:if test="${order.pid eq product.pid }">
+<td>
 <input name="oilist"  type="checkbox" value="${order.oid }" checked="checked"> 
-</c:if>
-</c:forEach>
 </td>
  <td class="s-title">
    <a href="<%=basePath %>product/product_pdetail.action?product.pid=${product.pid }" target="_blank" title="${product.pname }" class="J_MakePoint">
@@ -129,7 +127,7 @@ function dosubmit(){
    <c:forEach var="size" items="${slist }">
    <c:forEach var="order" items="${olist }">
    <c:if test="${size.sid eq order.sid}">
-   <span>类别： ${size.psize }</span>
+   <span>尺寸： ${size.psize }</span>
    </c:if>
    </c:forEach>
    </c:forEach>
@@ -137,7 +135,7 @@ function dosubmit(){
  <a title="消费者保障服务，卖家承诺商品如实描述" href="#" target="_blank">
 <img src="img/flo.png"/>
 </a>
-    <div>
+  <div>
  <span style="color:gray;">卖家承诺72小时内发货</span>
  </div>
  </td>
@@ -147,26 +145,23 @@ function dosubmit(){
  <em class="style-normal-small-black J_ItemPrice"  >${product.price }</em>
   </span>
 </td>
+<td>
      <input type="hidden" class="J_Quantity" value="1" />
-	<c:forEach var="order" items="${olist }">
-     	<c:if test="${order.pid eq product.pid}">
-  			${order.pnum }
- 		</c:if>
- 	</c:forEach>
+     <c:out value="${order.pnum }"></c:out>
+ </td>
  <td class="s-agio">
        <div class="J_Promotion promotion" data-point-url="">无优惠</div>
    </td>
  <td class="s-total">
    
   <span class='price '>
-    <c:forEach var="order" items="${olist }">
-     	<c:if test="${order.pid eq product.pid}">
-  			<em class="style-normal-bold-red J_ItemTotal">${product.price*order.pnum }</em>
- 		</c:if>
- 	</c:forEach>
+  	<em class="style-normal-bold-red J_ItemTotal">${product.price*order.pnum }</em>	
  </span>
  </td>
+ </c:if>
+</c:forEach>
 </tr>
+
 </c:forEach>
 </c:if>
 
@@ -176,7 +171,7 @@ function dosubmit(){
 </tr>
 <tr class="blue-line" style="height: 2px;"><td colspan="5"></td></tr>
 <tr class="other other-line">
- <td colspan="5">
+ <td colspan="6">
  <ul class="dib-wrap">
  <li class="dib user-info">
  <ul class="wrap">
@@ -240,7 +235,7 @@ function dosubmit(){
 </tr>
 
 <tr class="shop-total blue-line">
- <td colspan="5">店铺合计(不含运费，服务费)：
+ <td colspan="6">店铺合计(不含运费，服务费)：
    <span class='price g_price '>
  <span>&yen;</span><em class="style-middle-bold-red J_ShopTotal"  >${total }</em>
   </span>
@@ -251,16 +246,15 @@ function dosubmit(){
 </tbody>
   <tfoot>
  <tr>
- <td colspan="5">
-
+ <td colspan="6">
 <div class="order-go" data-spm="4">
 <div class="J_AddressConfirm address-confirm">
- <div class="kd-popup pop-back" style="margin-bottom: 40px;">
- <div class="box">
- <div class="bd">
+	<div class="kd-popup pop-back" style="margin-bottom: 40px;">
+	<div class="box">
+	<div class="bd">
 </div>
-     </div>
- </div>
+</div>
+</div>
          <a href="<%=basePath %>cart/cart_list.action"
  class="back J_MakePoint" target="_top"
  data-point-url="">返回购物车</a>

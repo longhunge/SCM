@@ -10,6 +10,7 @@ import com.lcx.entity.Cart;
 import com.lcx.entity.Product;
 import com.lcx.entity.ProductSize;
 import com.lcx.entity.ProductType;
+import com.lcx.entity.User;
 import com.lcx.service.BrandService;
 import com.lcx.service.CartService;
 import com.lcx.service.ProductService;
@@ -41,7 +42,9 @@ public class CartAction extends ActionSupport {
 	ActionContext ctx = ActionContext.getContext();
 	//添加到购物车
 	public String list(){
-		clist = cartService.findall();
+		User user = new User(); 
+		user = (User) ctx.getSession().get("user");
+		clist = cartService.finbyuid(user.getU_id());
 		if (!clist.isEmpty()) {
 			for (Cart ca : clist) {
 				plist.add(productService.findbyid(ca.getPid()));
@@ -54,17 +57,22 @@ public class CartAction extends ActionSupport {
 	public String addttocart(){
 		Cart cart1 =new Cart();
 		cart1 = cartService.findbypid(cart.getPid());
+		product = productService.findbyid(cart.getPid());
+		User user = new User(); 
+		user = (User) ctx.getSession().get("user");
 		if(cart1==null){
-			product=productService.findbyid(cart.getPid());
+			
+			cart.setUid(user.getU_id());
 			cart.setTid(product.getTid());
 			cart.setBid(product.getBid());
 			cartService.save(cart);
 		}else{
 			cart.setCid(cart1.getCid());
+			cart.setUid(user.getU_id());
 			cart.setCnumber(cart1.getCnumber()+cart.getCnumber());
 			cartService.update(cart);			
 		}
-		clist = cartService.findall();
+		clist = cartService.finbyuid(user.getU_id());
 		if (!clist.isEmpty()) {
 			for (Cart ca : clist) {
 				plist.add(productService.findbyid(ca.getPid()));

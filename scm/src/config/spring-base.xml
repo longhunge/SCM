@@ -10,6 +10,8 @@
    
     <bean id="addressDao" class="com.lcx.dao.impl.AddressDaoImpl" parent="sDao">    	
     </bean>
+    <bean id="wuliuUpdatedao" class="com.lcx.dao.impl.WuliuUpdatedaoImpl" parent="sDao">    	
+    </bean>
    <bean id="worderDao" class="com.lcx.dao.impl.WOrderDaoImpl" parent="sDao">    	
     </bean>
    <bean id="ordersDao" class="com.lcx.dao.impl.OrdersDaoImpl" parent="sDao">    	

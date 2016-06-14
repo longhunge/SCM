@@ -190,21 +190,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            	商品信息管理
+                            	订单管理
                         </div>
 						<form name="form1" action="" method="post" enctype="multipart/form-data">
 						<div class="panel-body col-lg-12">
 						<div class="row show-grid from-group">
 						<div class="input-group  col-lg-6">
 						<table cellspacing="4px">
-						<tr>
-                        	<td>   
-                                 <a href="<%=basePath %>product/product_paddui.action"> <button type="button" class="btn btn-inline btn-default">增加</button></a>
-                            </td>
-							<td>	
-                                || <button type="button" class="btn btn-inline btn-default" onclick="doDeleteAll()">批量删除</button>                  
-                            </td>
-                            </tr>
                             </table>
 							</div>
 						</div>
@@ -218,33 +210,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <tr>
 										<th><label class="checkbox-inline"><input type="checkbox" onclick="funCheckAll(this);">全选</label></th>
                                             <th>商品名</th>
-											<th>价格</th>
+											<th>姓名</th>
                                             <th>类别</th>
-											<th>品牌</th>
+                                            <th>品牌</th>
+                                            <th>数量</th>
+											<th>状态</th>
 											<th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="product" items="${plist}" varStatus="rowStatus">   
+                                    <c:forEach var="order" items="${olist}" varStatus="rowStatus">
+                                    <c:forEach var="product" items="${plist}" varStatus="rowStatus">  
+                                    <c:if test="${product.pid eq order.pid }">
                                         <tr class="gradeC">
 										    <td><input class="checkbox" name ="selectRaw" value="${product.pid}"type="checkbox"></td>
                                             <td><c:out value="${product.pname}"/></td>
-											<td><c:out value="${product.price}"/></td>
+                                            <td>
+                                   
+                                            <c:forEach var="tuser" items="${ulist}" varStatus="rowStatus">
+                                            	<c:if test="${order.uid eq tuser.u_id}" >
+                                            		<c:out value="${tuser.u_name}"/>
+                                            	</c:if>
+                                            </c:forEach>
+                                          
+											</td>
+											<td>
 											<c:forEach var="ttype" items="${tlist}"
 												varStatus="rowStatus">
 												<c:if test="${ttype.tid eq product.tid}">													
-														<td><c:out value="${ttype.tname}" /></td>
+														<c:out value="${ttype.tname}" />
 												</c:if>
 											</c:forEach>
+											</td>
+											<td>
 											<c:forEach var="brand" items="${blist}"
 												varStatus="rowStatus">
 												<c:if test="${brand.bid eq product.bid}">													
-														<td><c:out value="${brand.bname}" /></td>
+														<c:out value="${brand.bname}" />
 												</c:if>
-											</c:forEach>                                          
-                                            <td class="center"><a href="<%=basePath %>product/product_pdelete.action?product.pid=${product.pid}">删除</a>||<a href="<%=basePath %>product/product_peditui.action?product.pid=${product.pid}">编辑</a>||<a href="<%=basePath %>product/product_photui.action?product.pid=${product.pid}">加入热购</a></td>
-                                        </tr>  
-                                      </c:forEach>                
+											</c:forEach>
+											</td>
+											<td>
+												<c:out value="${order.pnum}" />
+											</td>  
+											<td>
+												<c:out value="${order.ostatus}" />
+											</td>                                          
+                                            <td class="center"><a href="<%=basePath %>order/order_delete.action?order.oid=${order.oid}">删除</a></td>
+                                        </tr> 
+                                        </c:if>  
+                                      </c:forEach> 
+                                      </c:forEach>               
                                     </tbody>
                                 </table>
                             </div>

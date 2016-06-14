@@ -16,4 +16,6 @@ public interface WOrderService {
 	public WOrder findbyid(Serializable id) ;
 
 	public List<WOrder> findall();
+	
+	public List<WOrder> findbylid(String id);
 }

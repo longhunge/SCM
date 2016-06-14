@@ -228,7 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <th>帐号</th>
 											<th>姓名</th>
                                             <th>性别</th>
-											<th>等级</th>
+											<th>权限</th>
 											<th>邮箱</th>
                                             <th>手机</th>
                                             <th>操作</th>
@@ -241,10 +241,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td><c:out value="${user.u_account}"/></td>
 											<td><c:out value="${user.u_name}"/></td>
                                             <td><c:out value="${user.u_sex}"/></td>
-                                            <td><c:out value="${user.u_rank}"/></td>
+                                            <td><c:out value="${user.u_privilege}"/></td>
                                             <td class="center"><c:out value="${user.u_email}"/></td>
                                             <td class="center"><c:out value="${user.u_phone}"/></td>
-                                            <td class="center"><a href="<%=basePath %>back/user_delete.action?user.u_id=${user.u_id}">删除</a>||<a href="<%=basePath %>back/user_editui.action?user.u_id=${user.u_id}">编辑</a></td>
+                                            <td class="center">
+                                            <a href="<%=basePath %>back/user_delete.action?user.u_id=${user.u_id}">删除</a>
+                                            ||<a href="<%=basePath %>back/user_editui.action?user.u_id=${user.u_id}">编辑</a>
+                                            ||<a href="<%=basePath %>back/user_addtologitics.action?user.u_id=${user.u_id}">设为物流人员</a>
+                                            </td>
                                         </tr>  
                                       </c:forEach>                
                                     </tbody>

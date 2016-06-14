@@ -23,4 +23,7 @@
 	<include file="config/struts-cart.xml"></include>
 	<include file="config/struts-logitics.xml"></include>
 	<include file="config/struts-orders.xml"></include>
+	<include file="config/struts-order.xml"></include>
+	<include file="config/struts-address.xml"></include>
+	<include file="config/struts-wuliu.xml"></include>
 </struts>

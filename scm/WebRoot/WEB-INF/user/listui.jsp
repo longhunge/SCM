@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>购物车</title>
+    <title>订单</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -232,18 +232,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <tbody>
     <c:if test="${!empty olist}">
     <c:forEach var="order" items="${olist}" varStatus="rowStatus">
-      <tr>
+      <tr>  
+        <td class="goods">
         <c:forEach var="product" items="${plist }" varStatus="rowStatus">
-        <c:if test="${product.pid==order.pid }">
-        <td class="goods"><img src="${product.img1 }" alt="${product.pname }"/><span>${product.pname }</span></td>
+    	<c:if test="${product.pid==order.pid }">
+        <img src="${product.img1 }" alt="${product.pname }"/>
+         </c:if>
+       	</c:forEach> 
+       	<c:forEach var="product" items="${plist }" varStatus="rowStatus">
+    	<c:if test="${product.pid==order.pid }">
+    	<span>${product.pname }</span>
+    	</c:if>
+    	</c:forEach>
+       </td>
+       <c:forEach var="product" items="${plist }" varStatus="rowStatus">
+    	<c:if test="${product.pid==order.pid }">
         <td class="price" >${product.price}</td>
-        <td class="count">${order.pnum }</td>  
+        </c:if>
+        </c:forEach>
+        <td class="count">${order.pnum }</td> 
+        <c:forEach var="product" items="${plist }" varStatus="rowStatus">
+    	<c:if test="${product.pid==order.pid }"> 
         <td class="subtotal">${order.pnum*product.price }</td>
+        </c:if>
+        </c:forEach>
         <td>${order.ostatus }</td>
-        <td class="operation"><span class="delete"><a href="<%=basePath %>orders/orders_delete.action?orders.oid=${order.oid}">删除</a></span></td>
-       </c:if>
-       </c:forEach>
-      </tr>
+        <td class="operation">
+        <span class="delete">
+        <a href="<%=basePath %>orders/orders_delete.action?orders.oid=${order.oid}">删除</a>
+        </span>
+        <c:if test="${order.ostatus eq '待付款'}">
+        <a href="<%=basePath %>orders/orders_save.action?orders.oid=${order.oid}">付款</a>
+        </c:if>
+        </td>
+       </tr>
+        
       </c:forEach>
       </c:if>
     </tbody>

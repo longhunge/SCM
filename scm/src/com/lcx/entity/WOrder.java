@@ -7,11 +7,18 @@ public class WOrder implements Serializable {
 	private String oid;//用户对应的订单id
 	private String wostatus;//物流订单状态
 	private String lid;//物流订单所属公司
+	private String aid;//物流订单地址信息
 	
 	
 	
 	
 	
+	public String getAid() {
+		return aid;
+	}
+	public void setAid(String aid) {
+		this.aid = aid;
+	}
 	public String getLid() {
 		return lid;
 	}

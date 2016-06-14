@@ -33,18 +33,34 @@ public class LoginUserAction extends ActionSupport {
 		
 		if(user!=null){
 			User loginUser=userService.findUser(user);
-			ctx.getSession().put("user", loginUser);
+			if(loginUser!=null){
+				ctx.getSession().put("user", loginUser);
+				if(loginUser.getU_privilege().equals("管理员")){
+					return "userlistui";
+				}else if(loginUser.getU_privilege().equals("物流管理")){
+					return "wuliulistui";
+				}
+			}
 		}
 		hlist = hotService.findall();
 		for(Hot ho: hlist){
-			System.out.println(ho.getHot1());
-			product = productService.findbyid(ho.getHot1());
-			System.out.println(product.getPname());
+			product = productService.findbyid(ho.getHot1());			
 			plist.add(product);
 		}
 		return "login";
 	}
 	
+	public String reg(){
+		if(user!=null){
+			user.setU_privilege("用户");
+			userService.save(user);
+			User loginUser=userService.findUser(user);
+			ctx.getSession().put("user", loginUser);
+		}else{
+			
+		}
+		return "login";		
+	}
 //	public String login(){	
 //		if(user!=null){
 //			User loginUser=userService.findUser(user);

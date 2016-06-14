@@ -42,4 +42,10 @@ public class WOrderServiceImpl implements WOrderService {
 		return worderDao.findall();
 	}
 
+	@Override
+	public List<WOrder> findbylid(String id) {
+		// TODO Auto-generated method stub
+		return worderDao.findbylid(id);
+	}
+
 }

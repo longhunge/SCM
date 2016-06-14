@@ -125,29 +125,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                      
-                        <li>
-                            <a href="table.html"><i class="fa fa-dashboard fa-fw"></i> -主页</a>
+                       <li>
+                            <a href="<%=basePath %>back/user_listui.action"><i class="fa fa-dashboard fa-fw"></i>主页</a>
                         </li>
 						<li>
-                            <a href="table_product.html"><i class="fa fa-pencil fa-fw"></i> -商品管理</a>
-                        </li>
-                        <li>
-                            <a href="table_user.html"><i class="fa fa-bar-chart-o fa-fw"></i> -用户管理</span></a>
-                        </li>
-						<li>
-                            <a href="table_company.html"><i class="fa fa-truck fa-fw"></i> -物流公司管理</a>
-                        </li>
-						<li>
-                            <a href="table_manager.html"><i class="fa fa-android fa-fw"></i> -管理员账户管理</a>
+                            <a href="<%=basePath %>product/product_plistui.action"><i class="fa fa-pencil fa-fw"></i> 商品管理</a>
                         </li>
                         <li>
-                            <a href="table_order"><i class="fa fa-table fa-fw"></i> -订单管理</a>
+                            <a href="<%=basePath %>brand/brand_blistui.action"><i class="fa fa-bar-chart-o fa-fw"></i>品牌管理</span></a>
                         </li>
 						<li>
-                            <a href="table_pinglun"><i class="fa fa-linux fa-fw"></i> -评论管理</a>
-						</li>
-	
+                            <a href="<%=basePath %>logitics/logitics_listui.action"><i class="fa fa-truck fa-fw"></i> 物流公司管理</a>
+                        </li>
+						<li>
+                            <a href="<%=basePath %>type/type_tlistui.action"><i class="fa fa-android fa-fw"></i>商品类别管理</a>
+                        </li>
+                        <li>
+                            <a href="<%=basePath %>order/order_olistui.action"><i class="fa fa-table fa-fw"></i> -订单管理</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -183,7 +179,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<label>姓名</label> <input class="form-control" placeholder="请输入姓名"
 												name="user.u_name">
 										</div>
-
+										<div class="form-group">
+											<label>邮箱</label> <input class="form-control" placeholder="请输入邮箱"
+												name="user.u_email">
+										</div>
+										<div class="form-group">
+											<label>手机</label> <input class="form-control" placeholder="请输入手机号"
+												name="user.u_phone">
+										</div>
+	
 										<div class="form-group">
 											<label>头像</label> <input name="headImg" type="file">
 										</div>
@@ -203,9 +207,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="form-group">
 											<label>权限</label> <select class="form-control"
 												name="user.u_privilege">
-												<option value="1">用户</option>
-												<option value="2">物流公司</option>
-												<option value="3">管理员</option>
+												<option value="用户">用户</option>
+												<option value="物流管理">物流管理</option>
+												<option value="管理员">管理员</option>
 
 											</select>
 										</div>
